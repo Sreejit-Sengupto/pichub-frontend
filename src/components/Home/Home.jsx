@@ -1,8 +1,7 @@
 import React from "react";
-import { Outlet, redirect, useLoaderData } from "react-router-dom";
-import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { redirect, useLoaderData } from "react-router-dom";
 import axios from "axios";
-import ImagePreviewer from "@/utils/ImagePreviewer";
+import ImagePreviewer from "@/utils/ImageUtils/ImagePreviewer";
 
 export async function loader() {
   try {
@@ -12,38 +11,34 @@ export async function loader() {
       return response.data;
     }
   } catch (error) {
-    return redirect("/login");
+    return redirect("/login?message=You have been logged out!");
   }
 }
 
 const Home = () => {
-  // const { user, logout } = useAuth();
   const user = useLoaderData();
-  console.log(user);
   const uploads = user.data.uploads;
   const images = uploads.map((item) => {
     return (
-      // <img
-      //   src={item.mediaURL}
-      //   alt="Photo by Drew Beamer"
-      //   className="rounded-md object-cover border"
-      //   key={item._id}
-      // />
       <ImagePreviewer
         imageUrl={item.mediaURL}
         caption={item.caption}
+        username={user.data.username}
+        uploadedBy={item.uploadedBy}
         key={item._id}
         mediaId={item._id}
+        addToGallery={true}
+        galleries={user.data.galleries}
       />
     );
   });
 
   return (
-    <div className="w-full grid grid-cols-4 gap-2 p-4">
-      {images}
-      {/* <ImagePreviewer /> */}
-      {/* <Outlet /> */}
-    </div>
+    <>
+      <div className="w-full grid grid-cols-2 sm:grid-cols-4 gap-2 p-4 mx-auto">
+        {images}
+      </div>
+    </>
   );
 };
 

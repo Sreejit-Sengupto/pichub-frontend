@@ -1,53 +1,26 @@
-import {
-  GalleryHorizontalEndIcon,
-  PlusCircleIcon,
-  PlusSquare,
-} from "lucide-react";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-
+import GalleryCreator from "@/utils//GalleryUtils/GalleryCreator";
+import { GalleryHorizontalEndIcon } from "lucide-react";
 import React from "react";
-import { Button } from "../ui/button";
-import { NavLink } from "react-router-dom";
-import { Input } from "../ui/input";
+import { NavLink, useLocation } from "react-router-dom";
 
 const GallerySelector = ({ user }) => {
-  console.log(user.data.galleries);
+  const location = useLocation();
+  console.log(location);
   return (
     <div className="w-full">
-      <h2 className="text-lg text-gray-400 my-5 flex justify-start items-center mx-4">
+      <h2 className="text-lg text-gray-400 my-6 flex justify-start items-center mx-4">
         <span>Galleries</span>
         <span className="ml-2">
           <GalleryHorizontalEndIcon />
         </span>
-
-        <Dialog>
-          <DialogTrigger className="ml-auto">
-            <PlusSquare />
-          </DialogTrigger>
-          <DialogContent className="w-[20%]">
-            <DialogHeader>
-              <DialogTitle className="mb-2">Create Gallery</DialogTitle>
-              <DialogDescription>
-                <Input placeholder="Enter gallery name" />
-                <Button className="w-full mt-2">Create Gallery</Button>
-              </DialogDescription>
-            </DialogHeader>
-          </DialogContent>
-        </Dialog>
+        <GalleryCreator />
       </h2>
       <NavLink
         to={"/home"}
-        className={({ isActive }) =>
-          isActive
-            ? "bg-primary block w-full p-5 rounded-lg"
-            : "block w-full p-5 rounded-lg"
+        className={
+          location.pathname === "/home"
+            ? "bg-background block w-full p-5 rounded-l-full my-2 relative text-primary curve"
+            : "block w-full p-5 rounded-l-full my-2"
         }
       >
         All Media
@@ -60,8 +33,8 @@ const GallerySelector = ({ user }) => {
             key={item._id}
             className={({ isActive }) =>
               isActive
-                ? "bg-primary block w-full p-5 rounded-lg my-2"
-                : "block w-full p-5 rounded-lg my-2"
+                ? "bg-background block w-full p-5 rounded-l-full my-2 relative curve text-primary"
+                : "block w-full p-5 rounded-l-full my-2"
             }
           >
             {item.galleryName}

@@ -17,24 +17,12 @@ import LandingPage, {
   loader as landigPageLoader,
 } from "./components/LandingPage/LandingPage";
 import Layout, { loader as layoutLoader } from "./components/Layout/Layout";
+import { Toaster } from "react-hot-toast";
 // import './App.css'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      {/* <Route
-        path="/login"
-        element={
-          <Suspense fallback={<p>Loading...</p>}>
-            <LoginPage />
-          </Suspense>
-        }
-      />
-      <Route path="/register" element={<SignUpPage />} />
-      <Route path="/" element={<PrivateRoute />}>
-        <Route index element={<Home />} />
-        <Route path="gallery" element={<Gallery />} />
-      </Route> */}
       <Route path="/" element={<LandingPage />} loader={landigPageLoader} />
 
       <Route path="/home" element={<Layout />} loader={layoutLoader}>
@@ -49,7 +37,12 @@ const router = createBrowserRouter(
 );
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <Toaster />
+      <RouterProvider router={router} />
+    </>
+  );
 }
 
 function delayForDemo(promise) {

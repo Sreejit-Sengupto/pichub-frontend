@@ -15,16 +15,15 @@ export async function loader() {
 
 const Layout = () => {
   const user = useLoaderData();
-  console.log(user);
   return (
     <div>
       <Navbar user={user} />
 
-      <div className="w-full h-screen flex">
-        <div className="w-[20%] border">
+      <div className="w-full h-[100dvh] flex lg:flex-row flex-col">
+        <div className="hidden lg:block w-[20%] border border-r-0 bg-[#1B1212]">
           <GallerySelector user={user} />
         </div>
-        <div className="w-[80%]">
+        <div className="w-full lg:w-[80%]">
           <Outlet />
         </div>
       </div>

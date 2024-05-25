@@ -9,27 +9,22 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-import { LogOutIcon, Upload } from "lucide-react";
+import { Upload } from "lucide-react";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
 import axios from "axios";
+import toast from "react-hot-toast";
+import { createNotification } from "../Functions/notify";
 
 const ImageUploder = () => {
   const [mediaPath, setMediaPath] = React.useState("");
   const [caption, setCaption] = React.useState("");
   const [galleries, setGalleries] = React.useState(null);
   const [selectedGallery, setSelectedGallery] = React.useState(null);
-
-  console.log(selectedGallery);
-
-  console.log(galleries);
-
-  console.log(caption);
-
-  console.log(mediaPath);
+  const [open, setOpen] = React.useState(false);
 
   React.useEffect(() => {
     fetchGalleries();
@@ -47,29 +42,53 @@ const ImageUploder = () => {
   const handleUpload = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    // const mediaName = mediaPath.name.substring(0, mediaPath.name.indexOf("."));
     formData.append("caption", caption);
     formData.append("media", mediaPath);
     if (selectedGallery) {
       formData.append("galleryId", selectedGallery);
     }
 
-    axios
-      .post("/api/v1/media/upload", formData)
-      .then((response) => console.log(response.data))
-      .then(setMediaPath(""))
-      .then(() => window.location.reload());
+    // toast
+    //   .promise(
+    //     axios.post("/api/v1/media/upload", formData),
+    //     {
+    //       loading: "Uploading...",
+    //       success: "Uploaded Successfully.",
+    //       error: "Upload Failed",
+    //     },
+    //     {
+    //       success: {
+    //         icon: "✅",
+    //         duration: 2500,
+    //       },
+    //     }
+    //   )
+    //   .then(() =>
+    //     setTimeout(() => {
+    //       window.location.reload();
+    //     }, 2500)
+    //   );
+    createNotification(
+      axios.post("/api/v1/media/upload", formData),
+      "Uploading...",
+      "Uploaded Successfully.",
+      "Upload Failed",
+    ).then(() =>
+      setTimeout(() => {
+        window.location.reload();
+      }, 2500),
+    );
   };
 
   return (
     <div>
-      <Popover>
+      <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button variant="outline">
             <span>
               <Upload />
             </span>
-            <span className="text-lg ml-2">Upload Image</span>
+            <span className="hidden lg:inline text-lg ml-2">Upload</span>
           </Button>
         </PopoverTrigger>
         <PopoverContent className="w-80">
@@ -90,13 +109,6 @@ const ImageUploder = () => {
                   className="my-4"
                 />
 
-                {/* <p className="mt-2 text-gray-400">Select Gallery</p>
-                <ScrollArea className="h-[200px] rounded-md border p-4 mb-2">
-                  {galleries && galleries.map((item) => {
-                    return <p key={item._id} className="border p-3 rounded-lg cursor-pointer">{item.galleryName}</p>
-                  })}
-                </ScrollArea> */}
-
                 <Select onValueChange={setSelectedGallery}>
                   <SelectTrigger className="mb-4">
                     <SelectValue placeholder="Add to gallery" />
@@ -109,13 +121,16 @@ const ImageUploder = () => {
                             {item.galleryName}
                           </SelectItem>
                         );
-                        // return <p key={item._id} className="border p-3 rounded-lg cursor-pointer">{item.galleryName}</p>
                       })}
                   </SelectContent>
                 </Select>
 
                 <div className="space-y-2 flex justify-center items-center w-full">
-                  <Button type="submit" className="w-full">
+                  <Button
+                    type="submit"
+                    className="w-full"
+                    onClick={() => setOpen(false)}
+                  >
                     <span>Upload</span>
                   </Button>
                 </div>

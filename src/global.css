@@ -57,3 +57,24 @@
     @apply bg-background text-foreground;
   }
 }
+
+.curve::before,
+.curve::after {
+  --border-radius: 2rem;
+  content: "";
+  position: absolute;
+  width: var(--border-radius);
+  height: var(--border-radius);
+  right: 0;
+}
+.curve::before {
+  top: calc(var(--border-radius) * -1);
+  border-radius: 0 0 100vw 0;
+  box-shadow: 8px 8px 0 0px #0c0a09;
+}
+.curve::after {
+  bottom: calc(var(--border-radius) * -1);
+  border-radius: 0 100vw 0 0;
+  box-shadow: 8px -8px 0 0px #0c0a09;
+  /* box-shadow: 8px -8px 0 0px var(--background); */
+}

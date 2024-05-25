@@ -10,13 +10,19 @@ import {
 import axios from "axios";
 
 import { useNavigate } from "react-router-dom";
-import ImageUploder from "@/utils/ImageUploder";
+import ImageUploder from "@/utils/ImageUtils/ImageUploder";
+import GallerySelectorMobile from "../Layout/GallerySelectorMobile";
+import { createNotification } from "@/utils/Functions/notify";
 
 const Navbar = ({ user }) => {
-  // const { logout } = useAuth();
   const navigate = useNavigate();
   const logout = async () => {
-    axios.post("/api/v1/user/logout").then(() => navigate("/login"));
+    createNotification(
+      axios.post("/api/v1/user/logout"),
+      "Logging out",
+      "Logged out successfully",
+      "Unable to logout",
+    ).then(() => navigate("/login"));
   };
 
   return (
@@ -31,9 +37,8 @@ const Navbar = ({ user }) => {
         <Popover>
           <PopoverTrigger asChild>
             <Button variant="outline">
-              <span className="text-lg mr-2">
-                {user.data.username.charAt(0).toUpperCase() +
-                  user.data.username.substring(1)}
+              <span className="hidden lg:inline text-lg mr-2">
+                {user.data.username}
               </span>
               <span>
                 <UserRound />
@@ -44,6 +49,9 @@ const Navbar = ({ user }) => {
             <div className="grid gap-4">
               <div className="space-y-2">
                 <p className="text-center">_id: {user.data._id}</p>
+                <p className="lg:hidden text-center">
+                  Username: {user.data.username}
+                </p>
               </div>
               <div className="space-y-2">
                 <button
@@ -59,6 +67,8 @@ const Navbar = ({ user }) => {
             </div>
           </PopoverContent>
         </Popover>
+
+        <GallerySelectorMobile user={user} />
       </div>
     </div>
   );

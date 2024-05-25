@@ -15,7 +15,7 @@ export async function loader() {
 
 const SignUpPage = () => {
   return (
-    <div className="w-[30%] mx-auto h-screen flex flex-col justify-center items-center">
+    <div className="w-[90%] lg:w-[30%] mx-auto h-[100dvh] flex flex-col justify-center items-center">
       <h1 className="text-3xl font-bold mb-10">
         Welcome to <span className="text-primary">Pichub</span>
       </h1>

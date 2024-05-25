@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { redirect } from "react-router-dom";
+import { Link, redirect } from "react-router-dom";
 
 export async function loader() {
   try {
@@ -14,7 +14,13 @@ export async function loader() {
 }
 
 const LandingPage = () => {
-  return <div>LandingPage</div>;
+  return (
+    <div>
+      Welcome to Pichub
+      <Link to={"/login"}>Login</Link>
+      <Link to={"/register"}>Register</Link>
+    </div>
+  );
 };
 
 export default LandingPage;

@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useNavigate } from "react-router-dom";
+import { createNotification } from "./Functions/notify";
 
 const formSchema = z.object({
   username: z
@@ -36,23 +37,20 @@ const InputForm = ({ type }) => {
     },
   });
 
-  // const { authenticate } = useAuth();
   const navigate = useNavigate();
   const onSubmit = async (e) => {
     e.preventDefault;
-    try {
-      const response = await axios.post(`/api/v1/user/${type.toLowerCase()}`, {
+    createNotification(
+      axios.post(`/api/v1/user/${type.toLowerCase()}`, {
         username: form.getValues().username,
         password: form.getValues().password,
-      });
-      console.log(response.data);
-      if (response) {
-        navigate("/home");
-      }
-    } catch (error) {
-      console.log(error.message);
-      navigate(`/${type.toLowerCase()}`);
-    }
+      }),
+      `Hold on`,
+      `${type} success`,
+      "Error while authenticating",
+    )
+      .then(() => navigate("/home"))
+      .catch(() => navigate(`/${type.toLowerCase()}`));
   };
 
   return (
@@ -60,6 +58,7 @@ const InputForm = ({ type }) => {
       <form
         onSubmit={form.handleSubmit(onSubmit)}
         className="space-y-8 w-full mx-auto p-6 rounded-lg border bg-[card] text-card-foreground shadow-sm"
+        style={{ boxShadow: `0 8px 32px 0 rgba( 31, 38, 135, 0.37 )` }}
       >
         <h2 className="text-2xl font-semibold w-full text-center">
           {type && type.charAt(0).toUpperCase() + type.substring(1)}
@@ -73,9 +72,6 @@ const InputForm = ({ type }) => {
               <FormControl>
                 <Input placeholder="Enter your username" {...field} />
               </FormControl>
-              {/* <FormDescription>
-                Enter your username
-              </FormDescription> */}
               <FormMessage />
             </FormItem>
           )}
@@ -93,9 +89,6 @@ const InputForm = ({ type }) => {
                   {...field}
                 />
               </FormControl>
-              {/* <FormDescription>
-                Enter your username
-              </FormDescription> */}
               <FormMessage />
             </FormItem>
           )}
