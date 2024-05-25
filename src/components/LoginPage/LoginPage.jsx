@@ -9,7 +9,7 @@ export async function loader() {
     if (response) {
       return redirect("/home");
     } else {
-      await axios.post("/api/v1/user/refresh-tokens");
+      await axios.post("https://pichub-backend-tlwt.onrender.com/api/v1/user/refresh-tokens");
       return redirect("/home");
     }
   } catch (error) {

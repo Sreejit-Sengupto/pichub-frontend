@@ -19,7 +19,7 @@ const DeleteGallery = ({ galleryId }) => {
   const navigate = useNavigate();
   const deleteGallery = async () => {
     createNotification(
-      axios.delete(`/api/v1/gallery/delete/${galleryId}`),
+      axios.delete(`https://pichub-backend-tlwt.onrender.com/api/v1/gallery/delete/${galleryId}`),
       "Deleting gallery",
       "Gallery deleted",
       "Failed to delete gallery",

@@ -5,7 +5,6 @@ import { NavLink, useLocation } from "react-router-dom";
 
 const GallerySelector = ({ user }) => {
   const location = useLocation();
-  console.log(location);
   return (
     <div className="w-full">
       <h2 className="text-lg text-gray-400 my-6 flex justify-start items-center mx-4">

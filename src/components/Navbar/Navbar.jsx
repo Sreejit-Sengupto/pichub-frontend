@@ -18,7 +18,7 @@ const Navbar = ({ user }) => {
   const navigate = useNavigate();
   const logout = async () => {
     createNotification(
-      axios.post("/api/v1/user/logout"),
+      axios.post("https://pichub-backend-tlwt.onrender.com/api/v1/user/logout"),
       "Logging out",
       "Logged out successfully",
       "Unable to logout",

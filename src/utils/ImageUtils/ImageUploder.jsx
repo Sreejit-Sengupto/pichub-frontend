@@ -16,7 +16,6 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import axios from "axios";
-import toast from "react-hot-toast";
 import { createNotification } from "../Functions/notify";
 
 const ImageUploder = () => {
@@ -47,29 +46,8 @@ const ImageUploder = () => {
     if (selectedGallery) {
       formData.append("galleryId", selectedGallery);
     }
-
-    // toast
-    //   .promise(
-    //     axios.post("/api/v1/media/upload", formData),
-    //     {
-    //       loading: "Uploading...",
-    //       success: "Uploaded Successfully.",
-    //       error: "Upload Failed",
-    //     },
-    //     {
-    //       success: {
-    //         icon: "✅",
-    //         duration: 2500,
-    //       },
-    //     }
-    //   )
-    //   .then(() =>
-    //     setTimeout(() => {
-    //       window.location.reload();
-    //     }, 2500)
-    //   );
     createNotification(
-      axios.post("/api/v1/media/upload", formData),
+      axios.post("https://pichub-backend-tlwt.onrender.com/api/v1/media/upload", formData),
       "Uploading...",
       "Uploaded Successfully.",
       "Upload Failed",

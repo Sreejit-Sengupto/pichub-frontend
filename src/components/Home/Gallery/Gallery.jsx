@@ -7,7 +7,7 @@ import SkeletonLoader from "@/utils/SkeletonLoader";
 
 export async function loader() {
   try {
-    const isLoggedIn = await axios.get("/api/v1/user/status");
+    const isLoggedIn = await axios.get("https://pichub-backend-tlwt.onrender.com/api/v1/user/status");
     if (isLoggedIn) {
       return isLoggedIn.data;
     }
@@ -27,7 +27,7 @@ const Gallery = () => {
   }, [params]);
   const getImages = async () => {
     const response = await axios.get(
-      `/api/v1/gallery/get-images/${params.gallery}`,
+      `https://pichub-backend-tlwt.onrender.com/api/v1/gallery/get-images/${params.gallery}`,
     );
     setImages(response.data);
   };
