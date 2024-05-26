@@ -5,7 +5,12 @@ import { defineConfig } from "vite";
 export default defineConfig({
   server: {
     proxy: {
-      "/api": "https://pichub-backend-tlwt.onrender.com",
+      // "/api": "https://pichub-backend-tlwt.onrender.com",
+      "/api": {
+        target: "https://pichub-backend-tlwt.onrender.com",
+        changeOrigin: true,
+        secure: true,
+      },
     },
   },
   plugins: [react()],
