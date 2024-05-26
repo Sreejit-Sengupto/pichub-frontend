@@ -2,7 +2,7 @@
     "rewrites": [
         {
             "source": "/api/(.*)",
-            "destination": "https://pichub-backend-tlwt.onrender.com"
+            "destination": "https://https://your-api.domain/$1pichub-backend-tlwt.onrender.com"
         },
         {
             "source": "/(.*)",
