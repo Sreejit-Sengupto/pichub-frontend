@@ -4,7 +4,7 @@ import { Link, redirect } from "react-router-dom";
 
 export async function loader() {
   try {
-    const response = await axios.get("https://pichub-backend-tlwt.onrender.com/api/v1/user/status");
+    const response = await axios.get("/api/v1/user/status");
     if (response) {
       return redirect("/home");
     }

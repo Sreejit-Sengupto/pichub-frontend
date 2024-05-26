@@ -41,7 +41,7 @@ const InputForm = ({ type }) => {
   const onSubmit = async (e) => {
     e.preventDefault;
     createNotification(
-      axios.post(`https://pichub-backend-tlwt.onrender.com/api/v1/user/${type.toLowerCase()}`, {
+      axios.post(`/api/v1/user/${type.toLowerCase()}`, {
         username: form.getValues().username,
         password: form.getValues().password,
       }),

@@ -47,7 +47,7 @@ const ImageUploder = () => {
       formData.append("galleryId", selectedGallery);
     }
     createNotification(
-      axios.post("https://pichub-backend-tlwt.onrender.com/api/v1/media/upload", formData),
+      axios.post("/api/v1/media/upload", formData),
       "Uploading...",
       "Uploaded Successfully.",
       "Upload Failed",
