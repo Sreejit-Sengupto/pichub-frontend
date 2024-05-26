@@ -9,7 +9,7 @@ export default defineConfig({
       "/api": {
         target: "https://pichub-backend-tlwt.onrender.com",
         changeOrigin: true,
-        secure: true,
+        secure: false,
       },
     },
   },
