@@ -1,0 +1,8 @@
+{
+    "rewrites": [
+        {
+            "source": "/api/(.*)",
+            "destination": "https://pichub-backend-tlwt.onrender.com"
+        }
+    ]
+}
