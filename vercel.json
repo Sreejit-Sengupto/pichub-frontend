@@ -3,6 +3,10 @@
         {
             "source": "/api/(.*)",
             "destination": "https://pichub-backend-tlwt.onrender.com"
+        },
+        {
+            "source": "/(.*)",
+            "destination": "/"
         }
     ]
 }
