@@ -7,7 +7,7 @@ import SkeletonLoader from "@/utils/SkeletonLoader";
 
 export async function loader() {
   try {
-    const isLoggedIn = await axios.get("https://pichub-backend-tlwt.onrender.com/api/v1/user/status");
+    const isLoggedIn = await axios.get("/api/v1/user/status");
     if (isLoggedIn) {
       return isLoggedIn.data;
     }
