@@ -22,7 +22,7 @@ const GalleryDetails = ({ galleryName, currentUser }) => {
 
   const fetchMembers = async () => {
     const response = await axios.get(
-      `/api/v1/gallery/get-members/${params.gallery}`,
+      `https://pichub-backend-tlwt.onrender.com/api/v1/gallery/get-members/${params.gallery}`,
     );
     setMembers(response.data);
   };
