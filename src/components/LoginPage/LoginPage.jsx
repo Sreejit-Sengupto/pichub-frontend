@@ -9,13 +9,7 @@ export async function loader() {
     if (response) {
       return redirect("/home");
     } else {
-      await axios.post("https://pichub-backend-tlwt.onrender.com/api/v1/user/refresh-tokens", {}, {
-        // proxy: {
-        //   protocol: 'https',
-        //   host: 'https://pichub-backend-tlwt.onrender.com',
-        //   port: 8080,
-        // }
-      });
+      await axios.post("/api/v1/user/refresh-tokens");
       return redirect("/home");
     }
   } catch (error) {
