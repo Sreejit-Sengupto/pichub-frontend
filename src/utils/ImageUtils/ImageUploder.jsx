@@ -16,6 +16,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import axios from "axios";
+axios.defaults.withCredentials = true
 import { createNotification } from "../Functions/notify";
 
 const ImageUploder = () => {

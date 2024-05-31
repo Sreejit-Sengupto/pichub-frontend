@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+axios.defaults.withCredentials = true
 import { Link, redirect } from "react-router-dom";
 
 export async function loader() {

@@ -1,6 +1,7 @@
 import React from "react";
 import { redirect, useLoaderData } from "react-router-dom";
 import axios from "axios";
+axios.defaults.withCredentials = true
 import ImagePreviewer from "@/utils/ImageUtils/ImagePreviewer";
 
 export async function loader() {

@@ -1,6 +1,8 @@
 import React from "react";
 import InputForm from "../../utils/InputForm";
 import { redirect, Link } from "react-router-dom";
+import axios from "axios";
+axios.defaults.withCredentials = true
 
 export async function loader() {
   try {

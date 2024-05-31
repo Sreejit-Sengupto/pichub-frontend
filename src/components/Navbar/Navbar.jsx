@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/popover";
 
 import axios from "axios";
+axios.defaults.withCredentials = true
 
 import { useNavigate } from "react-router-dom";
 import ImageUploder from "@/utils/ImageUtils/ImageUploder";

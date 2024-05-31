@@ -22,6 +22,7 @@ import {
 import { Trash } from "lucide-react";
 
 import axios from "axios";
+axios.defaults.withCredentials = true
 import { createNotification } from "../Functions/notify";
 
 const AddToGallery = ({ galleries, mediaId }) => {

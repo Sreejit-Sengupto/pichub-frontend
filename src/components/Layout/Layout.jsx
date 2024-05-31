@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "../Navbar/Navbar";
 import { Outlet, redirect, useLoaderData } from "react-router-dom";
 import axios from "axios";
+axios.defaults.withCredentials = true
 import GallerySelector from "./GallerySelector";
 
 export async function loader() {

@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Trash } from "lucide-react";
 import axios from "axios";
+axios.defaults.withCredentials = true
 import { useNavigate } from "react-router-dom";
 import { createNotification } from "../Functions/notify";
 

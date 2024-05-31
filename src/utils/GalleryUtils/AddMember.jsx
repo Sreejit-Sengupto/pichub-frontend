@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/popover";
 import { UserPlus2 } from "lucide-react";
 import axios from "axios";
+axios.defaults.withCredentials = true
 import { useParams } from "react-router-dom";
 import { createNotification } from "../Functions/notify";
 
