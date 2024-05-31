@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Trash } from "lucide-react";
 import axios from "axios";
-axios.defaults.withCredentials = true
+axios.defaults.withCredentials = true;
 import { useNavigate } from "react-router-dom";
 import { createNotification } from "../Functions/notify";
 
@@ -22,6 +22,7 @@ const DeleteGallery = ({ galleryId }) => {
     createNotification(
       axios.delete(
         `https://pichub-backend-tlwt.onrender.com/api/v1/gallery/delete/${galleryId}`,
+        { withCredentials: true },
       ),
       "Deleting gallery",
       "Gallery deleted",

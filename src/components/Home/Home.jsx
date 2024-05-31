@@ -1,17 +1,19 @@
 import React from "react";
 import { redirect, useLoaderData } from "react-router-dom";
 import axios from "axios";
-axios.defaults.withCredentials = true
+axios.defaults.withCredentials = true;
 import ImagePreviewer from "@/utils/ImageUtils/ImagePreviewer";
 
 export async function loader() {
   try {
     const isLoggedIn = await axios.get(
       "https://pichub-backend-tlwt.onrender.com/api/v1/user/status",
+      { withCredentials: true },
     );
     if (isLoggedIn) {
       const response = await axios.get(
         "https://pichub-backend-tlwt.onrender.com/api/v1/user/get",
+        { withCredentials: true },
       );
       return response.data;
     }

@@ -7,7 +7,7 @@ import {
 import { UsersRound } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import axios from "axios";
-axios.defaults.withCredentials = true
+axios.defaults.withCredentials = true;
 import { useParams } from "react-router-dom";
 import DeleteGallery from "@/utils/GalleryUtils/DeleteGallery";
 import AddMember from "@/utils/GalleryUtils/AddMember";
@@ -24,6 +24,7 @@ const GalleryDetails = ({ galleryName, currentUser }) => {
   const fetchMembers = async () => {
     const response = await axios.get(
       `https://pichub-backend-tlwt.onrender.com/api/v1/gallery/get-members/${params.gallery}`,
+      { withCredentials: true },
     );
     setMembers(response.data);
   };

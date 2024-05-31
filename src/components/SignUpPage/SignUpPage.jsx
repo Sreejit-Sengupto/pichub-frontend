@@ -2,12 +2,13 @@ import React from "react";
 import InputForm from "../../utils/InputForm";
 import { redirect, Link } from "react-router-dom";
 import axios from "axios";
-axios.defaults.withCredentials = true
+axios.defaults.withCredentials = true;
 
 export async function loader() {
   try {
     const response = await axios.get(
       "https://pichub-backend-tlwt.onrender.com/api/v1/user/status",
+      { withCredentials: true },
     );
     if (response) {
       return redirect("/home");

@@ -1,12 +1,13 @@
 import React from "react";
 import axios from "axios";
-axios.defaults.withCredentials = true
+axios.defaults.withCredentials = true;
 import { Link, redirect } from "react-router-dom";
 
 export async function loader() {
   try {
     const response = await axios.get(
       "https://pichub-backend-tlwt.onrender.com/api/v1/user/status",
+      { withCredentials: true },
     );
     if (response) {
       return redirect("/home");

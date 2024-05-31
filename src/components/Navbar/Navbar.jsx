@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/popover";
 
 import axios from "axios";
-axios.defaults.withCredentials = true
+axios.defaults.withCredentials = true;
 
 import { useNavigate } from "react-router-dom";
 import ImageUploder from "@/utils/ImageUtils/ImageUploder";
@@ -19,7 +19,11 @@ const Navbar = ({ user }) => {
   const navigate = useNavigate();
   const logout = async () => {
     createNotification(
-      axios.post("https://pichub-backend-tlwt.onrender.com/api/v1/user/logout"),
+      axios.post(
+        "https://pichub-backend-tlwt.onrender.com/api/v1/user/logout",
+        {},
+        { withCredentials: true },
+      ),
       "Logging out",
       "Logged out successfully",
       "Unable to logout",

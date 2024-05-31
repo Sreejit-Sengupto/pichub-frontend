@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-axios.defaults.withCredentials = true
+axios.defaults.withCredentials = true;
 import {
   Dialog,
   DialogContent,
@@ -24,6 +24,9 @@ const GalleryCreator = () => {
         `https://pichub-backend-tlwt.onrender.com/api/v1/gallery/create`,
         {
           galleryName: galleryName,
+        },
+        {
+          withCredentials: true,
         },
       ),
       "Creating Gallery",

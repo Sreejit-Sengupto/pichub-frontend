@@ -22,7 +22,7 @@ import {
 import { Trash } from "lucide-react";
 
 import axios from "axios";
-axios.defaults.withCredentials = true
+axios.defaults.withCredentials = true;
 import { createNotification } from "../Functions/notify";
 
 const AddToGallery = ({ galleries, mediaId }) => {
@@ -36,6 +36,9 @@ const AddToGallery = ({ galleries, mediaId }) => {
         `https://pichub-backend-tlwt.onrender.com/api/v1/media/add-to-gallery/${selectedGallery}`,
         {
           mediaId,
+        },
+        {
+          withCredentials: true,
         },
       ),
       "Adding to Gallery",

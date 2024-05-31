@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/popover";
 import { UserPlus2 } from "lucide-react";
 import axios from "axios";
-axios.defaults.withCredentials = true
+axios.defaults.withCredentials = true;
 import { useParams } from "react-router-dom";
 import { createNotification } from "../Functions/notify";
 
@@ -23,6 +23,9 @@ const AddMember = () => {
         {
           username: newMember,
           galleryId: params.gallery,
+        },
+        {
+          withCredentials: true,
         },
       ),
       `Adding ${newMember}`,

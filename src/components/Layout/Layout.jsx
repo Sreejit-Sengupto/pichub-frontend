@@ -2,18 +2,20 @@ import React from "react";
 import Navbar from "../Navbar/Navbar";
 import { Outlet, redirect, useLoaderData } from "react-router-dom";
 import axios from "axios";
-axios.defaults.withCredentials = true
+axios.defaults.withCredentials = true;
 import GallerySelector from "./GallerySelector";
 
 export async function loader() {
   const isLoggedIn = await axios.get(
     "https://pichub-backend-tlwt.onrender.com/api/v1/user/status",
+    { withCredentials: true },
   );
   if (!isLoggedIn) {
     return redirect("/login");
   }
   const response = await axios.get(
     "https://pichub-backend-tlwt.onrender.com/api/v1/user/get",
+    { withCredentials: true },
   );
   return response.data;
 }

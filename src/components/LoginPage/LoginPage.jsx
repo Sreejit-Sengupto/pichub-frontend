@@ -1,19 +1,22 @@
 import React from "react";
 import InputForm from "../../utils/InputForm";
 import axios from "axios";
-axios.defaults.withCredentials = true
+axios.defaults.withCredentials = true;
 import { Link, redirect, useParams, useSearchParams } from "react-router-dom";
 
 export async function loader() {
   try {
     const response = await axios.get(
       "https://pichub-backend-tlwt.onrender.com/api/v1/user/status",
+      { withCredentials: true },
     );
     if (response) {
       return redirect("/home");
     } else {
       await axios.post(
         "https://pichub-backend-tlwt.onrender.com/api/v1/user/refresh-tokens",
+        {},
+        { withCredentials: true },
       );
       return redirect("/home");
     }

@@ -2,14 +2,15 @@ import React from "react";
 import { redirect, useLoaderData, useParams } from "react-router-dom";
 import ImagePreviewer from "@/utils/ImageUtils/ImagePreviewer";
 import axios from "axios";
-axios.defaults.withCredentials = true
+axios.defaults.withCredentials = true;
 import GalleryDetails from "./GalleryDetails";
 import SkeletonLoader from "@/utils/SkeletonLoader";
 
 export async function loader() {
   try {
     const isLoggedIn = await axios.get(
-      "https://pichub-backend-tlwt.onrender.com/api/v1/api/v1/user/status"
+      "https://pichub-backend-tlwt.onrender.com/api/v1/api/v1/user/status",
+      { withCredentials: true },
     );
     if (isLoggedIn) {
       return isLoggedIn.data;
@@ -30,7 +31,8 @@ const Gallery = () => {
   }, [params]);
   const getImages = async () => {
     const response = await axios.get(
-      `https://pichub-backend-tlwt.onrender.com/api/v1/gallery/get-images/${params.gallery}`
+      `https://pichub-backend-tlwt.onrender.com/api/v1/gallery/get-images/${params.gallery}`,
+      { withCredentials: true },
     );
     setImages(response.data);
   };

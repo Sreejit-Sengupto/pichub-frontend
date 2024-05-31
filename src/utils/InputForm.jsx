@@ -3,7 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import axios from "axios";
-axios.defaults.withCredentials = true
+axios.defaults.withCredentials = true;
 
 import { Button } from "@/components/ui/button";
 import {
@@ -47,6 +47,9 @@ const InputForm = ({ type }) => {
         {
           username: form.getValues().username,
           password: form.getValues().password,
+        },
+        {
+          withCredentials: true,
         },
       ),
       `Hold on`,

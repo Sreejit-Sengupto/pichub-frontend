@@ -16,7 +16,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import axios from "axios";
-axios.defaults.withCredentials = true
+axios.defaults.withCredentials = true;
 import { createNotification } from "../Functions/notify";
 
 const ImageUploder = () => {
@@ -33,6 +33,7 @@ const ImageUploder = () => {
   const fetchGalleries = async () => {
     const response = await axios.get(
       "https://pichub-backend-tlwt.onrender.com/api/v1/user/get",
+      { withCredentials: true },
     );
     setGalleries(response.data.data.galleries);
   };

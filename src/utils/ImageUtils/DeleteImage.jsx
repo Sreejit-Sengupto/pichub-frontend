@@ -15,7 +15,7 @@ import {
 import { Trash } from "lucide-react";
 
 import axios from "axios";
-axios.defaults.withCredentials = true
+axios.defaults.withCredentials = true;
 import { createNotification } from "../Functions/notify";
 
 const DeleteImage = ({ mediaId }) => {
@@ -25,6 +25,7 @@ const DeleteImage = ({ mediaId }) => {
     createNotification(
       axios.delete(
         `https://pichub-backend-tlwt.onrender.com/api/v1/media/delete/${mediaId}`,
+        { withCredentials: true },
       ),
       "Deleting",
       "Deleted successfully",
