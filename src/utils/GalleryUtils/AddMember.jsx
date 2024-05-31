@@ -17,10 +17,13 @@ const AddMember = () => {
   const addMember = async () => {
     setNewMember("");
     createNotification(
-      axios.post(`/api/v1/gallery/add-member`, {
-        username: newMember,
-        galleryId: params.gallery,
-      }),
+      axios.post(
+        `https://pichub-backend-tlwt.onrender.com/api/v1/gallery/add-member`,
+        {
+          username: newMember,
+          galleryId: params.gallery,
+        },
+      ),
       `Adding ${newMember}`,
       `Added ${newMember} successfully`,
       `Failed to add ${newMember}. Make sure the username is correct.`,

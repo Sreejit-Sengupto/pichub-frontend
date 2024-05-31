@@ -30,7 +30,9 @@ const ImageUploder = () => {
   }, []);
 
   const fetchGalleries = async () => {
-    const response = await axios.get("/api/v1/user/get");
+    const response = await axios.get(
+      "https://pichub-backend-tlwt.onrender.com/api/v1/user/get",
+    );
     setGalleries(response.data.data.galleries);
   };
 
@@ -47,7 +49,10 @@ const ImageUploder = () => {
       formData.append("galleryId", selectedGallery);
     }
     createNotification(
-      axios.post("/api/v1/media/upload", formData),
+      axios.post(
+        "https://pichub-backend-tlwt.onrender.com/api/v1/media/upload",
+        formData,
+      ),
       "Uploading...",
       "Uploaded Successfully.",
       "Upload Failed",

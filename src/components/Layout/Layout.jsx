@@ -5,11 +5,15 @@ import axios from "axios";
 import GallerySelector from "./GallerySelector";
 
 export async function loader() {
-  const isLoggedIn = await axios.get("/api/v1/user/status");
+  const isLoggedIn = await axios.get(
+    "https://pichub-backend-tlwt.onrender.com/api/v1/user/status",
+  );
   if (!isLoggedIn) {
     return redirect("/login");
   }
-  const response = await axios.get("/api/v1/user/get");
+  const response = await axios.get(
+    "https://pichub-backend-tlwt.onrender.com/api/v1/user/get",
+  );
   return response.data;
 }
 

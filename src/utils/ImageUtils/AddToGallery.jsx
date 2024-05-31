@@ -31,9 +31,12 @@ const AddToGallery = ({ galleries, mediaId }) => {
   const addMediaToGallery = async () => {
     setAdding(true);
     createNotification(
-      axios.post(`/api/v1/media/add-to-gallery/${selectedGallery}`, {
-        mediaId,
-      }),
+      axios.post(
+        `https://pichub-backend-tlwt.onrender.com/api/v1/media/add-to-gallery/${selectedGallery}`,
+        {
+          mediaId,
+        },
+      ),
       "Adding to Gallery",
       "Added to Gallery",
       "Failed to add to Gallery",

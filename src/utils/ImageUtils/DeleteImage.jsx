@@ -22,7 +22,9 @@ const DeleteImage = ({ mediaId }) => {
   const deleteMedia = async () => {
     setDeleting(true);
     createNotification(
-      axios.delete(`/api/v1/media/delete/${mediaId}`),
+      axios.delete(
+        `https://pichub-backend-tlwt.onrender.com/api/v1/media/delete/${mediaId}`,
+      ),
       "Deleting",
       "Deleted successfully",
       "Error while deleting",

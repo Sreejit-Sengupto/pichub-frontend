@@ -5,9 +5,13 @@ import ImagePreviewer from "@/utils/ImageUtils/ImagePreviewer";
 
 export async function loader() {
   try {
-    const isLoggedIn = await axios.get("/api/v1/user/status");
+    const isLoggedIn = await axios.get(
+      "https://pichub-backend-tlwt.onrender.com/api/v1/user/status",
+    );
     if (isLoggedIn) {
-      const response = await axios.get("/api/v1/user/get");
+      const response = await axios.get(
+        "https://pichub-backend-tlwt.onrender.com/api/v1/user/get",
+      );
       return response.data;
     }
   } catch (error) {

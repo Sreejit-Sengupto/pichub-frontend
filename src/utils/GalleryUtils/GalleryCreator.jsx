@@ -19,9 +19,12 @@ const GalleryCreator = () => {
 
   const handleCreateGallery = async () => {
     createNotification(
-      axios.post(`/api/v1/gallery/create`, {
-        galleryName: galleryName,
-      }),
+      axios.post(
+        `https://pichub-backend-tlwt.onrender.com/api/v1/gallery/create`,
+        {
+          galleryName: galleryName,
+        },
+      ),
       "Creating Gallery",
       "Gallery created successfully",
       "Failed to create gallery",
